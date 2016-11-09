@@ -40,3 +40,16 @@ if(BUILD_DOCS)
 		)
 	endif(DOXYGEN_FOUND)
 endif(BUILD_DOCS)
+
+set(targets_export_name "${PROJECT_NAME}Targets")
+set(include_install_dir "include")
+install(
+    TARGETS units
+    EXPORT "${targets_export_name}"
+    INCLUDES DESTINATION "${include_install_dir}"
+)
+message("Installing ${CMAKE_CURRENT_SOURCE_DIR}/include/units.h to ${CMAKE_INSTALL_PREFIX}/include/units")
+install(
+    FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/units.h
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/include/units
+)
